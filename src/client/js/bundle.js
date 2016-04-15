@@ -1,19 +1,16 @@
 import React from "react";
-import ReactDom from "react-dom";
-import $ from "jquery";
+import ReactDOM from "react-dom";
+import { Router, Route, IndexRoute, hashHistory } from "react-router";
 
-class Layout extends React.Component {
-  constructor(){
-    super();
-  }
+import ListRecipe from "./pages/ListRecipe";
+import Layout from "./pages/Layout";
 
-  render() {
-    return (
-      <h1>hola</h1>
-    )
-  }
-}
+const app = document.getElementById("app");
 
-const app = $("#app");
-
-ReactDom.render(<Layout />, app);
+ReactDOM.render(
+  <Router history={hashHistory}>
+    <Route path="/" component={Layout}>
+      <IndexRoute component={ListRecipe}></IndexRoute>
+    </Route>
+  </Router>,
+app);

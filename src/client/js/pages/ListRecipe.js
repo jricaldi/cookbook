@@ -4,6 +4,7 @@ import Recipe from "../components/Recipe";
 
 export default class ListRecipe extends React.Component {
   render() {
+    //TODO: Get recipes from database
     const Recipes = [
       "Aji de Gallina",
       "Lomo saltado",

@@ -1,5 +1,6 @@
 import React from "react";
 
+import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import Search from "../components/layout/Search";
 
@@ -10,9 +11,10 @@ export default class Layout extends React.Component {
 
     return (
       <div class="container">
-        <Search/>
+        <Header />
+        <Search />
         {this.props.children}
-        <Footer/>
+        <Footer />
       </div>
 
     );

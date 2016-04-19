@@ -2,7 +2,6 @@
   "name": "cookbook",
   "version": "1.0.0",
   "description": "Cookbook",
-  "main": "webpack.config.js",
   "dependencies": {
     "babel-loader": "^6.2.0",
     "babel-plugin-add-module-exports": "^0.1.2",
@@ -24,7 +23,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --content-base src --inline --hot"
+    "dev": "webpack-dev-server --content-base src/client --inline --hot",
+    "server": "nodemon src/server/index.js"
   },
   "repository": {
     "type": "git",

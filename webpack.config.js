@@ -5,7 +5,7 @@ var path = require('path');
 module.exports = {
   context: path.join(__dirname, "src/client"),
   devtool: debug ? "inline-sourcemap" : null,
-  entry: "./js/bundle.js",
+  entry: "./js/app.js",
   module: {
     loaders: [
       {
@@ -20,7 +20,7 @@ module.exports = {
     ]
   },
   output: {
-    path: __dirname + "/src/client/",
+    path:__dirname + "/src/client",
     filename: "bundle.min.js"
   },
   plugins: debug ? [] : [

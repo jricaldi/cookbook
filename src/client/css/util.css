@@ -1,0 +1,43 @@
+.mb50{
+  margin-bottom: 50px;
+}
+
+.mt10{
+  margin-top: 10px;
+}
+
+.title{
+  font-weight: 300;
+  letter-spacing: 0.3rem;
+  color: #624025;
+  margin-top: 0px;
+}
+
+.background{
+  background-image: url(../img/kitchen3.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  display: block;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  right: 0;
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  z-index: -1;
+}
+
+input.search{
+  font-size: 30px !important;
+  color: #7B1313;
+  border-color: #A46840;
+}
+
+input.search:focus{
+  border-color: #624025 !important;
+  box-shadow: 0 1px 0 0 brown !important; */
+}

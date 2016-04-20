@@ -15,7 +15,7 @@ export default class ListRecipe extends React.Component {
     ].map((recipeName, i) => <Recipe key={i} recipeName={recipeName} hola={recipeName}/> );
 
     return (
-        <div class="row">
+        <div class="row" id="recipeList">
           {Recipes}
         </div>
     );

@@ -5,11 +5,10 @@ export default class Recipe extends React.Component {
     const { recipeName } = this.props;
     console.log(this.props);
     return (
-      <div class="col s12 recipe">
-        <div class="card-panel teal hoverable">
-          <h4>{recipeName}</h4>
+      <div class="col s12 m4 l3 recipe hoverable">
+          <h4 class="center">{recipeName}</h4>
+          <br/>
           <p class="resume">Pequeña descripción</p>
-        </div>
       </div>
     );
   }

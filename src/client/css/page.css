@@ -1,0 +1,30 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+html {
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+input::-webkit-input-placeholder {
+color: #B4BEC7;; !important;
+font-size: 30px;
+}
+
+input:-moz-placeholder {
+color: rgb(130, 130, 130); !important;
+}
+
+input::-moz-placeholder {
+color: rgb(130, 130, 130); !important;
+}
+
+input:-ms-input-placeholder {
+color: rgb(130, 130, 130); !important;
+}

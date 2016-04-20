@@ -1,15 +1,26 @@
+.recipeCotainer{
+    height: 200px;
+    margin-top: 2em;
+}
+
 .recipe{
-  height: 200px;
-}
-
-.recipe:hover{
-  cursor: pointer;
-}
-
-#recipeList .recipe:hover{
-  border: 1px solid black;
+  height: 100%;
+  border: 1px solid #9E6E71;
   background-color: rgba(212, 218, 123, 0.85);
   background-image: url("../img/recipe.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.recipe:hover{
+  cursor: pointer;
+  border: 1px solid #6F4C4C;
+}
+
+.iconCategory{
+  height: 40px;
+  position: relative;
+  top: -20px;
+  right: -20px;
+  float: right;
 }

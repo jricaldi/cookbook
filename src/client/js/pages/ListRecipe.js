@@ -6,16 +6,100 @@ export default class ListRecipe extends React.Component {
   render() {
     //TODO: Get recipes from database
     const Recipes = [
-      "Aji de Gallina",
-      "Lomo saltado",
-      "Pure con papas",
-      "Sopa de casa",
-      "Aguadito",
-      "Tallarines rojos"
-    ].map((recipeName, i) => <Recipe key={i} recipeName={recipeName} hola={recipeName}/> );
+      {
+        name:"Aji de Gallina",
+        category:"Meat",
+        chef: "Jorge Ricaldi",
+        ingredients:{
+          ingredient:{
+            name:"aji",
+            amount:"300gr"
+          },
+          ingredient:{
+            name:"gallina",
+            amount:"1kg"
+          }
+        }
+      },
+      {
+        name:"Lomo saltado",
+        category:"Meat",
+        chef: "Jorge Ricaldi",
+        ingredients:{
+          ingredient:{
+            name:"aji",
+            amount:"300gr"
+          },
+          ingredient:{
+            name:"gallina",
+            amount:"1kg"
+          }
+        }
+      },
+      {
+        name:"Gelatina de fresa",
+        category:"Desserts",
+        chef: "Jorge Ricaldi",
+        ingredients:{
+          ingredient:{
+            name:"aji",
+            amount:"300gr"
+          },
+          ingredient:{
+            name:"gallina",
+            amount:"1kg"
+          }
+        }
+      },
+      {
+        name:"Sopa de casa",
+        category:"Meat",
+        chef: "Jorge Ricaldi",
+        ingredients:{
+          ingredient:{
+            name:"aji",
+            amount:"300gr"
+          },
+          ingredient:{
+            name:"gallina",
+            amount:"1kg"
+          }
+        }
+      },
+      {
+        name:"Aguadito",
+        category:"Salads",
+        chef: "Jorge Ricaldi",
+        ingredients:{
+          ingredient:{
+            name:"aji",
+            amount:"300gr"
+          },
+          ingredient:{
+            name:"gallina",
+            amount:"1kg"
+          }
+        }
+      },
+      {
+        name:"Tallarines rojos",
+        category:"Pastas",
+        chef: "Jorge Ricaldi",
+        ingredients:{
+          ingredient:{
+            name:"aji",
+            amount:"300gr"
+          },
+          ingredient:{
+            name:"gallina",
+            amount:"1kg"
+          }
+        }
+      }
+    ].map((recipe, i) => <Recipe key={i} name={recipe.name} category={recipe.category}/> );
 
     return (
-        <div class="row" id="recipeList">
+        <div class="row">
           {Recipes}
         </div>
     );

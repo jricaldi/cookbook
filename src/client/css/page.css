@@ -13,18 +13,25 @@ html {
 }
 
 input::-webkit-input-placeholder {
-color: #B4BEC7;; !important;
+color: #967C67; !important;
 font-size: 30px;
 }
 
 input:-moz-placeholder {
-color: rgb(130, 130, 130); !important;
+  color: #967C67; !important;
+  font-size: 30px;
 }
 
 input::-moz-placeholder {
-color: rgb(130, 130, 130); !important;
+  color: #967C67; !important;
+  font-size: 30px;
 }
 
 input:-ms-input-placeholder {
-color: rgb(130, 130, 130); !important;
+  color: #967C67; !important;
+  font-size: 30px;
+}
+
+a{
+  color: black;
 }

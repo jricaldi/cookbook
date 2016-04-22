@@ -34,12 +34,14 @@
 input.search{
   font-size: 30px !important;
   color: #7B1313;
-  border-color: #A46840;
+  border-color: #967C67;
+  border-width: 2px !important;
 }
 
 input.search:focus{
   border-color: #624025 !important;
-  box-shadow: 0 1px 0 0 brown !important; */
+  box-shadow: none !important;
+  border-width: 2px !important;
 }
 
 @media only screen and (min-width: 993px) {

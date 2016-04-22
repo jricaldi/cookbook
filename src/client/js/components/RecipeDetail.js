@@ -1,15 +1,26 @@
 import React from "react";
-import ReactDOM from "reac-dom";
+import { getRecipeID } from "../calls/recipe";
 
-export default class RecipeDetail extend React.Component{
-  let esto = this;
+export default class RecipeDetail extends React.Component {
 
-  console.log("esto:");
-  console.log(esto);
   render(){
-
+    var {idRecipe} = this.props.params;
+    var detalle = getRecipeID(idRecipe)[0];
     return(
-      <div>Detalle de la receta</div>
+      <div class="row">
+        <div class="col s12 m4 l3">
+          <div class="recipe">
+            <div class="col s12" style={{height:"0px"}}>
+
+            </div>
+            <div>
+              <h4 class="center">{detalle.name}</h4>
+              <br/>
+              <p class="resume">{detalle.description}</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
     );

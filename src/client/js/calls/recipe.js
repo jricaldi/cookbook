@@ -17,24 +17,19 @@ function getListRecipesCategory(category){
 }
 
 export function getRecipeTerms(term){
-  let terms = term.split(" ");
-  console.log(terms);
-  if(terms.length === 1){
-    let list = getListRecipesCategory(terms[0]);
-    if(list.length >= 1)
+    let list = getListRecipesCategory(term);
+    if(list.length >= 1){
+      console.log("getListRecipesCategory()");
       return list;
+    }
     else
-      return getRecipeTerm(terms[0]);
-  }
-  else{
-    //TODO: search multi terms
-  }
-
+      return getRecipeTerm(term);
 }
 
 function getRecipeTerm(term){
+  console.log("getRecipeTerm()");
   return getListRecipes().filter((recipe)=>
-    (recipe.name).includes(term)
+    ((recipe.name).toUpperCase()).includes(term.toUpperCase())
   );
 
 }

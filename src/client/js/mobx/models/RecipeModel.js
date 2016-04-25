@@ -56,7 +56,7 @@ export default class RecipeModel {
 	}
 
 	static fromJson(store, json) {
-		return new TodoModel(store, 
+		return new RecipeModel(store, 
 			json.id, json.name, json.category,
 			json.chef, json.description, json.ingredients
 		);

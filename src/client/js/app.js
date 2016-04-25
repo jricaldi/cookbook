@@ -4,9 +4,9 @@ import { Router, Route, IndexRoute, hashHistory } from "react-router";
 import {createHistory} from "history";
 
 
-import ListRecipe from "./pages/ListRecipe";
+import ListRecipe from "./components/ListRecipe";
 import RecipeDetail from "./components/RecipeDetail";
-import Layout from "./pages/Layout";
+import Layout from "./components/Layout";
 
 const app = document.getElementById("app");
 

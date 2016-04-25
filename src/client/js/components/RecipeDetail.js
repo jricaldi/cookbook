@@ -1,6 +1,8 @@
 import React from "react";
+import {observer} from 'mobx-react';
 import { getRecipeID } from "../calls/recipe";
 
+@observer
 export default class RecipeDetail extends React.Component {
 
   render(){

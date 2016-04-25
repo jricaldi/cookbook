@@ -1,15 +1,13 @@
-import {observable, computed, autorun} from 'mobx';
-import TodoModel from '../models/RecipeModel'
+import {observable, computed} from 'mobx';
+import RecipeModel from '../models/RecipeModel'
+import  {getListRecipes, getRecipeTerms} from "../../calls/recipe";
 
 export default class RecipeStore {
-	key;
+
 	@observable recipes = [];
 
-	constructor(key) {
-		this.key = key;
-
+	constructor() {
 		this.getRecipeFromDB();
-		this.subscribeLocalStorageToModel();
 	}
 
 	@computed get totalRecipes() {
@@ -18,12 +16,21 @@ export default class RecipeStore {
 
 	getRecipeFromDB(model) {
 		//TODO: Get from BD
-		//this.recipes = 
+		this.recipes = getListRecipes().map(
+			(recipe)=> RecipeModel.fromJson(this,recipe)
+		);
+	}
+
+	searchTerm(term){
+		this.recipes = getRecipeTerms(term).map(
+			(recipe)=> RecipeModel.fromJson(this,recipe)
+		);
+		console.log(this.recipes);
 	}
 
 	addRecipe(recipe) {
-		this.recipes.push(new RecipeModel(this, 
-			/*Utils.uuid()*/, recipe.name, recipe.category,
+		this.recipes.push(new RecipeModel(this,
+			recipe.id, recipe.name, recipe.category,
 			recipe.chef, recipe.description, recipe.ingredients));
 	}
 

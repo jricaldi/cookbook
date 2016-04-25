@@ -7,6 +7,7 @@ export default class RecipeStore {
 	@observable recipes = [];
 
 	constructor() {
+		console.log("RecipeStore");
 		this.getRecipeFromDB();
 	}
 

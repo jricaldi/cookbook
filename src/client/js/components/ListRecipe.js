@@ -6,9 +6,17 @@ import {recipeStore} from "../mobx/stores";
 @observer
 export default class ListRecipe extends React.Component {
 
+  constructor(props,context){
+    super(props,context);
+    //this.state = {list : recipeStore.recipes};
+    this.state = {list : this.props.route.recipeStore.recipes}
+    console.log("listRecipe")
+  }
+
   render() {
     console.log(recipeStore.recipes);
-    const Recipes = recipeStore.recipes.map((recipe, i) =>
+    console.log(this.state.list);
+    const Recipes = this.props.route.recipeStore.recipes.map((recipe, i) =>
     <Recipe
       key={recipe.id}
       recipe={recipe} /> );

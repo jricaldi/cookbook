@@ -1,7 +1,7 @@
-export const Constant = {
+export const Constants = {
     CATEGORY :
       {
-        NONE : "NONE",
+        ALL : "ALL",
         PASTAS : "PASTAS",
         MEAT : "MEAT",
         SALADS : "SALADS",

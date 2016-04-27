@@ -2,16 +2,24 @@ import React from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import {observer} from 'mobx-react';
 import Recipe from "./Recipe";
-import {recipeStore} from "../mobx/stores";
+import {recipeStore, categoryStore} from "../mobx/stores";
+import { Constants} from "../util/Constants";
 
 @observer
 export default class ListRecipe extends React.Component {
 
   render() {
-    const Recipes = recipeStore.recipes.map((recipe, i) =>
-    <Recipe
+    let tempRecipes = recipeStore.recipes.filter((recipe)=>{
+      if(categoryStore.category === Constants.CATEGORY.ALL)
+        return true;
+      return (recipe.category).toUpperCase()=== categoryStore.category;
+    });
+
+    const Recipes = tempRecipes.map((recipe, i) =>
+      <Recipe
       key={recipe.id}
-      recipe={recipe} /> );
+      recipe={recipe}/>
+    );
 
     return (
         <div>

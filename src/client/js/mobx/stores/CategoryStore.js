@@ -1,8 +1,8 @@
 import {observable} from 'mobx';
-import {Constant} from "../../util/Constants";
+import {Constants} from "../../util/Constants";
 
 export default class CategoryStore {
 
-	@observable category = Constant.CATEGORY.NONE;
-	
+	@observable category = Constants.CATEGORY.ALL;
+
 }

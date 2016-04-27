@@ -29,7 +29,7 @@ export default class CmbCategoria extends React.Component{
       <div>
         <select class="icons" ref="categoria"
           id="cmbCateoria">
-          <option value="none">Select a category</option>
+          <option>All</option>
           {list}
         </select>
       </div>

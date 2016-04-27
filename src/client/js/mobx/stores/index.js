@@ -3,3 +3,6 @@ import CategoryStore from "./CategoryStore";
 
 export const recipeStore = new RecipeStore();
 export const categoryStore = new CategoryStore();
+
+//test
+window.categoryStore = categoryStore;

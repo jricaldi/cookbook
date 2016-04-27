@@ -14,7 +14,7 @@ const app = document.getElementById("app");
 ReactDOM.render(
   <Router history={browserHistory}>
     <Route path="/" component={Layout}>
-      <IndexRoute component={ListRecipe} recipeStore={recipeStore}></IndexRoute>
+      <IndexRoute component={ListRecipe}></IndexRoute>
       <Route path="recipe/:idRecipe" name="recipeDetail" component={RecipeDetail}></Route>
     </Route>
   </Router>,

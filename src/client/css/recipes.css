@@ -5,16 +5,19 @@
 
 .recipe{
   height: 100%;
-  border: 1px solid #9E6E71;
+  border: 2px solid #9E6E71;
   background-color: rgba(212, 218, 123, 0.85);
   background-image: url("../img/recipe.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
 }
 
 .recipe:hover{
   cursor: pointer;
-  border: 1px solid #6F4C4C;
+  border-color:#6F4C4C;
 }
 
 .iconCategory{
@@ -24,3 +27,33 @@
   right: -20px;
   float: right;
 }
+
+/*** Effects for list in React ***/
+
+.effectList-enter {
+  opacity: 0.01;
+}
+
+.effectList-enter.effectList-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.effectList-leave {
+  opacity: 1;
+}
+
+.effectList-leave.effectList-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+.effectList-appear {
+  opacity: 0.01;
+}
+
+.effectList-appear.effectList-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+/******************************************/

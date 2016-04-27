@@ -9,7 +9,6 @@ export default class Recipe extends React.Component {
   constructor(props, context){
     super(props, context);
     this.state = {recipe : props.recipe};
-    console.log("recipe single");
   }
 
   render() {

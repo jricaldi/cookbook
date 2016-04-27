@@ -19,7 +19,7 @@ export default class Layout extends React.Component {
             <ListLastRecipes/>
           </div>
           <main class="col s12 m8 l8">
-            <section class="col s12">
+            <section class="col s12 mt30">
               <div class="col l3">
                 <CmbCategoria/>
               </div>

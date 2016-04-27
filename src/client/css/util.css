@@ -2,6 +2,10 @@
   margin-bottom: 30px;
 }
 
+.mt30{
+  margin-top: 30px;
+}
+
 .mt10{
   margin-top: 10px;
 }
@@ -14,11 +18,11 @@
 }
 
 .background{
-  background-image: url(../img/kitchen3.jpg);
+  background-image: url(../img/lienzo.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
+  /*filter: blur(8px);
+  -webkit-filter: blur(8px);*/
   display: block;
   height: 100%;
   left: 0;
@@ -32,16 +36,16 @@
 }
 
 input.search{
-  font-size: 30px !important;
+  font-size: 1.2rem !important;
   color: #7B1313;
-  border-color: #967C67;
-  border-width: 2px !important;
+  /*border-color: #967C67;
+  border-width: 2px !important;*/
 }
 
 input.search:focus{
   border-color: #624025 !important;
   box-shadow: none !important;
-  border-width: 2px !important;
+  /*border-width: 2px !important;*/
 }
 
 @media only screen and (min-width: 993px) {
@@ -60,4 +64,11 @@ input.search:focus{
   .logo{
     height: 100px;
   }
+}
+
+.lienzo{
+  height: 100%;
+  background-image: url(../img/lienzo.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }

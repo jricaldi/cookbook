@@ -6,13 +6,8 @@ import { recipeStore } from '../mobx/stores';
 @observer
 export default class Search extends React.Component {
 
-  search = (event) =>{
-    	event.preventDefault();
-
-      let term = event.target.value
-      if(term.length > 2)
-        recipeStore.searchTerm(term);
-
+  search = (e) =>{
+    recipeStore.searchTerm(e.target.value);
   }
 
   render() {

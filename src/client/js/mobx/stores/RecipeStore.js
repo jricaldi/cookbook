@@ -5,9 +5,9 @@ import  {getListRecipes, getRecipeTerms} from "../../calls/recipe";
 export default class RecipeStore {
 
 	@observable recipes = [];
+	startRecipes = [];
 
 	constructor() {
-		console.log("RecipeStore");
 		this.getRecipeFromDB();
 	}
 
@@ -17,16 +17,20 @@ export default class RecipeStore {
 
 	getRecipeFromDB(model) {
 		//TODO: Get from BD
-		this.recipes = getListRecipes().map(
+		let firstList = getListRecipes().map(
 			(recipe)=> RecipeModel.fromJson(this,recipe)
 		);
+		this.recipes = Object.assign([], firstList);
+		this.startRecipes = firstList;
 	}
 
 	searchTerm(term){
 		this.recipes = getRecipeTerms(term).map(
 			(recipe)=> RecipeModel.fromJson(this,recipe)
 		);
-		console.log(this.recipes);
+		if(this.recipes.length<1){
+			this.recipes = this.startRecipes;
+		}
 	}
 
 	addRecipe(recipe) {

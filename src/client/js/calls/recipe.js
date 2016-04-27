@@ -19,7 +19,6 @@ function getListRecipesCategory(category){
 export function getRecipeTerms(term){
     let list = getListRecipesCategory(term);
     if(list.length >= 1){
-      console.log("getListRecipesCategory()");
       return list;
     }
     else
@@ -27,7 +26,6 @@ export function getRecipeTerms(term){
 }
 
 function getRecipeTerm(term){
-  console.log("getRecipeTerm()");
   return getListRecipes().filter((recipe)=>
     ((recipe.name).toUpperCase()).includes(term.toUpperCase())
   );

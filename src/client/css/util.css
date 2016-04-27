@@ -48,24 +48,6 @@ input.search:focus{
   /*border-width: 2px !important;*/
 }
 
-@media only screen and (min-width: 993px) {
-  .logo{
-    height: 300px;
-  }
-}
-
-@media only screen and (min-width: 600px) and (max-width: 992px) {
-  .logo{
-    height: 200px;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .logo{
-    height: 100px;
-  }
-}
-
 .lienzo{
   height: 100%;
   background-image: url(../img/lienzo.jpg);

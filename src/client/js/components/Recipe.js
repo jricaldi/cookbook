@@ -13,7 +13,7 @@ export default class Recipe extends React.Component {
 
   render() {
 
-    let { id, name, category } = this.state.recipe;
+    let { id, name, category, description } = this.state.recipe;
     let imgCategory = getImageCategory(category);
 
     return (
@@ -23,10 +23,10 @@ export default class Recipe extends React.Component {
             <div class="col s12" style={{height:"0px"}}>
               <img src={imgCategory} class="iconCategory"/>
             </div>
-            <div>
-              <h4 class="center">{name}</h4>
+            <div class="col s12">
+              <h4 class="center titleRecipe">{name}</h4>
               <br/>
-              <p class="resume">Pequeña descripción</p>
+              <p class="resume">{description} asd asdas dasd</p>
             </div>
           </div>
         </Link>

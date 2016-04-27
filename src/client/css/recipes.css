@@ -28,6 +28,14 @@
   float: right;
 }
 
+.iconCategoryLarge{
+  height: 80px;
+  position: relative;
+  top: -40px;
+  right: -40px;
+  float: right;
+}
+
 /*** Effects for list in React ***/
 
 .effectList-enter {
@@ -57,3 +65,22 @@
   transition: opacity .5s ease-in;
 }
 /******************************************/
+
+
+@media only screen and (min-width: 993px) {
+  .titleRecipe{
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+  .titleRecipe{
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .titleRecipe{
+    font-size: 2rem;
+  }
+}

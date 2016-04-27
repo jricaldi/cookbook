@@ -10,19 +10,16 @@ export default class ListRecipe extends React.Component {
     super(props,context);
     //this.state = {list : recipeStore.recipes};
     this.state = {list : this.props.route.recipeStore.recipes}
-    console.log("listRecipe")
   }
 
   render() {
-    console.log(recipeStore.recipes);
-    console.log(this.state.list);
     const Recipes = this.props.route.recipeStore.recipes.map((recipe, i) =>
     <Recipe
       key={recipe.id}
       recipe={recipe} /> );
 
     return (
-        <div class="row">
+        <div>
           {Recipes}
         </div>
     );

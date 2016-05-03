@@ -1,3 +1,7 @@
+.transition-wrapper {
+      position: relative;
+}
+
 .mb30{
   margin-bottom: 30px;
 }
@@ -15,6 +19,10 @@
   letter-spacing: 0.3rem;
   color: #624025;
   margin-top: 0px;
+}
+
+.bold{
+  font-weight: bolder;
 }
 
 .background{
@@ -35,15 +43,19 @@
   z-index: -1;
 }
 
+textarea,input.select-dropdown{
+  border-bottom: 2px solid #9e9e9e !important;
+}
+
 input.search{
   font-size: 1.2rem !important;
-  color: #7B1313;
+  border-bottom: 2px solid #9e9e9e;
   /*border-color: #967C67;
   border-width: 2px !important;*/
 }
 
-input.search:focus{
-  border-color: #624025 !important;
+input.search:focus,textarea:focus{
+  border-bottom: 2px solid #624025 !important;
   box-shadow: none !important;
   /*border-width: 2px !important;*/
 }

@@ -6,6 +6,7 @@ import Footer from "./common/Footer";
 import Header from "./common/Header";
 import ListLastRecipes from "./ListLastRecipes";
 import CmbCategoria from "./objects/CmbCategoria";
+import BtnNewRecipe from "./objects/BtnNewRecipe";
 
 @observer
 export default class Layout extends React.Component {
@@ -19,6 +20,9 @@ export default class Layout extends React.Component {
             <ListLastRecipes/>
           </div>
           <main class="col s12 m8 l8">
+            <section class="col s12 mt30 center">
+              <BtnNewRecipe/>
+            </section>
             <section class="col s12 mt30">
               <div class="col l3">
                 <CmbCategoria/>
@@ -28,7 +32,7 @@ export default class Layout extends React.Component {
               </div>
             </section>
             <section class="col s12">
-              {this.props.children}
+                {this.props.children}
             </section>
 
           </main>

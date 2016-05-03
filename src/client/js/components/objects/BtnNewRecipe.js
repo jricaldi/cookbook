@@ -1,13 +1,11 @@
 import React from "react";
-
+import {Link} from "react-router";
 
 export default class BtnNewRecipe extends React.Component{
   render(){
     return(
-      <div class="fixed-action-btn" class="btnNewRecipe">
-        <a class="btn-floating btn-large red">
-          <i class="large material-icons">mode_edit</i>
-        </a>
+      <div>
+        <Link to="/newRecipe" class="waves-effect waves-light btn-large green darken-2 borderCool2">Add Recipe</Link>
       </div>
     )
   }

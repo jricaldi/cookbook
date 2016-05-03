@@ -1,6 +1,11 @@
 .recipeCotainer{
-    height: 200px;
+    /*height: 100px;*/
     margin-top: 2em;
+}
+
+.recipeBigCotainer{
+  /*height: 600px;*/
+  margin-top: 2em;
 }
 
 .recipe{
@@ -69,7 +74,7 @@
 
 @media only screen and (min-width: 993px) {
   .titleRecipe{
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -83,4 +88,12 @@
   .titleRecipe{
     font-size: 2rem;
   }
+}
+
+.borderCool{
+  border: 2px solid #C58900;
+}
+
+.borderCool2{
+  border: 2px solid #3B7345;
 }

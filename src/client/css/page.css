@@ -12,22 +12,22 @@ html {
     font-family: 'Gloria Hallelujah', cursive;
 }
 
-input::-webkit-input-placeholder {
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {
 color: #8C8C8C;; !important;
 /*font-size: 30px;*/
 }
 
-input:-moz-placeholder {
+input:-moz-placeholder,textarea:-moz-placeholder {
   color: #8C8C8C; !important;
   /*font-size: 30px;*/
 }
 
-input::-moz-placeholder {
+input::-moz-placeholder,textarea::-moz-placeholder {
   color: #8C8C8C; !important;
   /*font-size: 30px;*/
 }
 
-input:-ms-input-placeholder {
+input::-ms-input-placeholder,textarea:-ms-input-placeholder {
   color: #8C8C8C; !important;
   /*font-size: 30px;*/
 }

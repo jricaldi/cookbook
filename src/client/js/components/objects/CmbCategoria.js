@@ -21,7 +21,7 @@ export default class CmbCategoria extends React.Component{
       (category,i)=>
         <option key={i} value={category}
           data-icon={`../../../img/categories/${category}.png`}
-          class="left circle"
+          class="left circle responsive-img"
           >{category}</option>
       );
 

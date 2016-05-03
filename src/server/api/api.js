@@ -95,6 +95,17 @@ recipesIDRest.delete(function(req,res){
   });
 });
 
+/*** Recipes:ID Comments ***/
+var recipesIDCommentsRest = router.route('/recipes/:id/comments:')
+
+recipesIDCommentsRest.get(function(req,res){
+  var id = req.params.id;
+  knex.select().from("comment").where({id_recipe : id})
+  .then(function(rows){
+    res.json(rows);
+  });
+});
+
 
 /*** Categories ***/
 var categoriesRest = router.route('/categories')

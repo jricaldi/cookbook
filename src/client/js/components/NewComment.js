@@ -11,7 +11,7 @@ export default class NewComment extends React.Component {
     return (
         <div class={show}>
           <div class="card-panel grey lighten-3">
-            <textarea ref="txtNewComment" id="textarea1" class="materialize-textarea" length="120" placeholder="Write a comment and press Enter"></textarea>
+            <textarea ref="txtNewComment" id="txtNewComment" class="materialize-textarea" length="120" placeholder="Write a comment and press Enter"></textarea>
           </div>
         </div>
 

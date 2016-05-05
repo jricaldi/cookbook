@@ -13,7 +13,6 @@ export default class RecipeDetail extends React.Component {
     var {idRecipe} = this.props.params;
     var detalle = getRecipeID(idRecipe)[0];
     let imgCategory = getImageCategory(detalle.category);
-    console.log(imgCategory);
 
     return(
         <div class="col s12 recipeBigCotainer" >

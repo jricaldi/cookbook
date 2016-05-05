@@ -13,7 +13,7 @@ export default class BtnNewComment extends React.Component {
 
     return (
       <div class="mt30">
-        <a class="waves-effect waves-light btn-large orange accent-2 black-text borderCool" onClick={this.showComment}>
+        <a class="waves-effect waves-light btn-large orange accent-2 black-text borderCool" onClick={this.showComment.bind(this)}>
           Add Comment
         </a>
       </div>

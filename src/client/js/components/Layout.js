@@ -7,9 +7,11 @@ import Header from "./common/Header";
 import ListLastRecipes from "./ListLastRecipes";
 import CmbCategoria from "./objects/CmbCategoria";
 import BtnNewRecipe from "./objects/BtnNewRecipe";
+import { viewStore } from "../mobx/stores";
 
 @observer
 export default class Layout extends React.Component {
+
   render() {
 
     return (

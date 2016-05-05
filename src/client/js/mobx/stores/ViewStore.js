@@ -1,4 +1,4 @@
-import {observable} from 'mobx';
+import {observable, autorun} from 'mobx';
 
 export default class ViewStore {
 

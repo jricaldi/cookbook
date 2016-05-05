@@ -4,7 +4,7 @@ maps.recipe = [
     {
         mapId: 'recipeMap',
         idProperty: 'id_recipe',
-        properties : ["name", "id_category","chef","description",
+        properties : ["name", "id_category","chef","preparation",
         "created","updated","name_url"],
         collections: [
             {name: 'ingredients', mapId: 'ingredientMap'}

@@ -4,9 +4,13 @@ import {observer} from 'mobx-react';
 @observer
 export default class NewRecipe extends React.Component {
 
-  submit(){
-    const {form } = this.refs;
+  saveRecipe(event){
+    event.preventDefault();
+    console.log(event);
+    console.log(this);
   }
+
+
 
   render() {
 
@@ -24,15 +28,15 @@ export default class NewRecipe extends React.Component {
     return (
       <div class="col s12">
         <div class="card-panel brown lighten-5">
-          <form red="form">
+          <form onSubmit={this.saveRecipe.bind(this)}>
             <div class="row">
               <div class="input-field col s6">
-                <input placeholder="Recipe name" id="name" type="text" class="validate"/>
+                <input placeholder="Recipe name" name="name" id="name" type="text" class="validate"/>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s6">
-                <input placeholder="Chef's name" id="chef" type="text" class="validate"/>
+                <input placeholder="Chef's name"  name="chef" id="chef" type="text" class="validate"/>
               </div>
             </div>
             <div class="row">
@@ -40,10 +44,10 @@ export default class NewRecipe extends React.Component {
               {ingredients}
             </div>
             <div class="row">
-              <textarea ref="preparation" id="preparation" class="materialize-textarea" length="120" placeholder="Preparation"></textarea>
+              <textarea name="preparation" id="preparation" class="materialize-textarea" length="120" placeholder="Preparation"></textarea>
             </div>
             <div class="row center">
-              <button class="btn">Submit Recipe</button>
+              <button class="btn" type="submit">Submit Recipe</button>
             </div>
           </form>
         </div>

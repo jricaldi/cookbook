@@ -26,19 +26,16 @@ recipesRest.get(function(req,res){
 
 recipesRest.post(function(req,res){
   var recipe = req.body;
+  var ingredients = req.body.ingredients;
   knex.transaction(function(trx){
 
-    knex.insert({id_recipe:recipe.id, name : recipe.name, chef : recipe.chef , category : recipe.category, preparation : recipe.preparation}).into("recipe")
+    knex.insert({id_recipe:recipe.id, name : recipe.name, chef : recipe.chef , category : recipe.category, preparation : recipe.preparation},"id_recipe").into("recipe")
     .transacting(trx)
-    // .then(function(ids) {
-    //   return Promise.map(books, function(book) {
-    //     book.catalogue_id = ids[0];
-    //
-    //     // Some validation could take place here.
-    //
-    //     return knex.insert(info).into('books').transacting(trx);
-    //   });
-    // })
+    .then(function(id_recipe) {
+      return Promise.map(ingredients, function(ing) {
+        return knex.insert({id_ingredient:ing.id,name:ing.name, amount: ing.amount, id_recipe:id_recipe}).into("ingredient").transacting(trx);
+      });
+    })
     .then(trx.commit).then(trx.rollback);
 
   })
@@ -132,8 +129,13 @@ var categoriesRest = router.route('/categories')
 
 categoriesRest.get(function(req,res){
   var id = req.params.id;
-  knex.select().from("category").then(function(rows){
-    res.json(JSON.parse(JSON.stringify(rows)));
+  knex.select().from("category")
+  .then(function(rows){
+    res.json(rows);
+  })
+  .catch(()=>{
+    console.log("categorias!!!");
+    res.json(["pastas","salads"]);
   });
 });
 

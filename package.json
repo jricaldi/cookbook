@@ -19,6 +19,7 @@
     "jquery": "^2.2.3",
     "knex": "^0.10.0",
     "knexnest": "^0.3.4",
+    "lodash": "^4.12.0",
     "mariasql": "^0.2.6",
     "mobx": "^2.1.4",
     "mobx-react": "^3.0.5",
@@ -45,5 +46,8 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jricaldi/cookbook/issues"
+  },
+  "devDependencies": {
+    "babel-polyfill": "^6.8.0"
   }
 }

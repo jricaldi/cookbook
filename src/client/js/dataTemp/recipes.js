@@ -5,7 +5,7 @@ export const recipes =
       name:"Aji de Gallina",
       category:"Meat",
       chef: "Jorge Ricaldi",
-      description:"This is a description",
+      preparation:"This is a preparation",
       ingredients:{
         ingredient:{
           name:"aji",
@@ -22,7 +22,7 @@ export const recipes =
       name:"Lomo saltado",
       category:"Meat",
       chef: "Jorge Ricaldi",
-      description:"This is a description",
+      preparation:"This is a preparation",
       ingredients:{
         ingredient:{
           name:"aji",
@@ -39,7 +39,7 @@ export const recipes =
       name:"Gelatina de fresa",
       category:"Desserts",
       chef: "Jorge Ricaldi",
-      description:"This is a description",
+      preparation:"This is a preparation",
       ingredients:{
         ingredient:{
           name:"aji",
@@ -56,7 +56,7 @@ export const recipes =
       name:"Sopa de casa",
       category:"Meat",
       chef: "Jorge Ricaldi",
-      description:"This is a description",
+      preparation:"This is a preparation",
       ingredients:{
         ingredient:{
           name:"aji",
@@ -73,7 +73,7 @@ export const recipes =
       name:"Aguadito",
       category:"Salads",
       chef: "Jorge Ricaldi",
-      description:"This is a description",
+      preparation:"This is a preparation",
       ingredients:{
         ingredient:{
           name:"aji",
@@ -90,7 +90,7 @@ export const recipes =
       name:"Tallarines rojos",
       category:"Pastas",
       chef: "Jorge Ricaldi",
-      description:"This is a description",
+      preparation:"This is a preparation",
       ingredients:{
         ingredient:{
           name:"aji",

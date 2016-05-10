@@ -6,31 +6,47 @@ import {categoryStore} from "../../mobx/stores";
 @observer
 export default class CmbCategoria extends React.Component{
 
-  componentDidMount(){
-    const { categoria } = this.refs;
-    $(categoria).material_select();
-    $(categoria).prev().children("li").on("click",(e)=>{
+  constructor(){
+    super();
+    this.state = { list: []};
+  }
+
+  async componentDidMount(){
+    const { category } = this.refs;
+    $(category).material_select();
+    $(category).prev().children("li").on("click",(e)=>{
       let span = $(e.target).html();
+      // $(category).val(span).change();
       categoryStore.category = span.toUpperCase();
     });
 
+
+    // let list = [];
+    const data = await getCategories();
+
+    // .then((data)=>{
+      console.log(data);
+      let list =  data.map(
+        (category,i)=>
+          <option key={i} value={category}
+            data-icon={`../../../img/categories/${category}.png`}
+            class="left circle responsive-img"
+            >{category}</option>
+        )
+
+      this.setState({list : list});
+      // }
+    // );
   }
 
   render(){
-    let list = getCategories().map(
-      (category,i)=>
-        <option key={i} value={category}
-          data-icon={`../../../img/categories/${category}.png`}
-          class="left circle responsive-img"
-          >{category}</option>
-      );
-
+    console.log(this.state.list);
+    const test = this.state.list;
     return(
       <div>
-        <select class="icons" ref="categoria"
-          id="cmbCateoria">
+        <select class="icons browser-default" ref="category" id="cmbCateoria">
           <option>All</option>
-          {list}
+          {test}
         </select>
       </div>
     )

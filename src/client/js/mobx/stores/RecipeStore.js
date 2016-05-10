@@ -35,9 +35,10 @@ export default class RecipeStore {
 	}
 
 	addRecipe(recipe) {
-		var id = uuid();
-		recipe.id = id;
-		this.recipes.push(new RecipeModel(this, recipe.id,
+		recipe.ingredients.forEach((ing)=>{
+			ing.id = uuid();
+		});
+		this.recipes.push(new RecipeModel(this, uuid(),
 			recipe.name, recipe.category,
 			recipe.chef, recipe.preparation, recipe.ingredients));
 		$.post("/api/recipes", recipe);

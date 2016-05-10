@@ -1,6 +1,7 @@
 import {observable, computed} from 'mobx';
 import RecipeModel from '../models/RecipeModel'
 import  {getListRecipes, getRecipeTerms} from "../../calls/recipe";
+import {uuid} from "../../util/Functions";
 
 export default class RecipeStore {
 
@@ -34,9 +35,13 @@ export default class RecipeStore {
 	}
 
 	addRecipe(recipe) {
-		this.recipes.push(new RecipeModel(this,
-			recipe.id, recipe.name, recipe.category,
-			recipe.chef, recipe.description, recipe.ingredients));
+		var id = uuid();
+		recipe.id = id;
+		this.recipes.push(new RecipeModel(this, recipe.id,
+			recipe.name, recipe.category,
+			recipe.chef, recipe.preparation, recipe.ingredients));
+		$.post("/api/recipes", recipe);
+
 	}
 
 }

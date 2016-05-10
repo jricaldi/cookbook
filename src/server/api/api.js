@@ -7,9 +7,6 @@ var resultMaps = require("../resultMaps/maps");
 
 app = express();
 var router = express.Router();
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
 
 /*** API rest ***/
 /*** Recipes ***/
@@ -28,6 +25,29 @@ recipesRest.get(function(req,res){
 });
 
 recipesRest.post(function(req,res){
+  var recipe = req.body;
+  knex.transaction(function(trx){
+
+    knex.insert({id_recipe:recipe.id, name : recipe.name, chef : recipe.chef , category : recipe.category, preparation : recipe.preparation}).into("recipe")
+    .transacting(trx)
+    // .then(function(ids) {
+    //   return Promise.map(books, function(book) {
+    //     book.catalogue_id = ids[0];
+    //
+    //     // Some validation could take place here.
+    //
+    //     return knex.insert(info).into('books').transacting(trx);
+    //   });
+    // })
+    .then(trx.commit).then(trx.rollback);
+
+  })
+  .then(function(result){
+    console.log(result);
+  })
+  .catch(function(error){
+    console.error(error);
+  });
   res.json({ message: 'post recipes' });
 });
 
@@ -66,7 +86,7 @@ recipesIDRest.put(function(req,res){
 
     knex("recipe").where({id_recipe : id})
     .update(body).transacting(trx)
-    then(trx.commit).then(trx.rollback);
+    .then(trx.commit).then(trx.rollback);
 
   })
   .then(function(result){
@@ -84,7 +104,7 @@ recipesIDRest.delete(function(req,res){
 
     knex("recipe").where({id_recipe : id}).del()
     .transacting(trx)
-    then(trx.commit).then(trx.rollback);
+    .then(trx.commit).then(trx.rollback);
 
   })
   .then(function(result){

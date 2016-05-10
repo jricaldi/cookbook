@@ -1,10 +1,10 @@
 var config = {
-  client: 'mysql',
+  client: 'pg',
   connection: {
     host     : '127.0.0.1',
-    user     : 'root',
-    password : '',
-    database : 'cookbook'
+    user     : 'ricaldi',
+    password : 'password',
+    database : 'ricaldi'
   }
 }
 

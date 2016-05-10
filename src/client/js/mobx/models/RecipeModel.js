@@ -6,16 +6,16 @@ export default class RecipeModel {
 	@observable name;
 	@observable category;
 	@observable chef;
-	@observable description;
+	@observable preparation;
 	@observable ingredients;
 
-	constructor(store, id, name, category, chef, description, ingredients ) {
+	constructor(store, id, name, category, chef, preparation, ingredients ) {
 		this.store = store;
 		this.id = id;
 		this.name = name;
 		this.category = category;
 		this.chef = chef;
-		this.description = description;
+		this.preparation = preparation;
 		this.ingredients = ingredients;
 	}
 
@@ -31,8 +31,8 @@ export default class RecipeModel {
 		this.chef = chef;
 	}
 
-	setDescription(description) {
-		this.description = description;
+	setDescription(preparation) {
+		this.preparation = preparation;
 	}
 
 	setIngredients(ingredients) {
@@ -50,15 +50,15 @@ export default class RecipeModel {
 			name: this.name,
 			category : this.category,
 			chef: this.chef,
-			description: this.description,
+			preparation: this.preparation,
 			ingredients: this.ingredients
 		};
 	}
 
 	static fromJson(store, json) {
-		return new RecipeModel(store, 
+		return new RecipeModel(store,
 			json.id, json.name, json.category,
-			json.chef, json.description, json.ingredients
+			json.chef, json.preparation, json.ingredients
 		);
 	}
 }

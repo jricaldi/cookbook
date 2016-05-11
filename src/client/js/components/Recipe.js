@@ -14,7 +14,7 @@ export default class Recipe extends React.Component {
   render() {
 
     let { id, name, category, description } = this.state.recipe;
-    let imgCategory = getImageCategory(category);
+    let imgCategory = getImageCategory(category.toUpperCase());
 
     return (
       <div class="col s6 m4 l4 recipeCotainer" >

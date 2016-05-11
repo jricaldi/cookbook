@@ -1,12 +1,14 @@
+import { Constants} from "./Constants";
+
 export function getImageCategory(category){
   switch (category) {
-    case "Pastas":
+    case Constants.CATEGORY.PASTAS:
       return "./img/categories/pastas.png";
-    case "Meat":
+    case Constants.CATEGORY.MEAT:
       return "./img/categories/meat.png";
-    case "Salads":
+    case Constants.CATEGORY.SALADS:
       return "./img/categories/salads.png";
-    case "Desserts":
+    case Constants.CATEGORY.DESSERTS:
       return "./img/categories/desserts.png";
     }
 }

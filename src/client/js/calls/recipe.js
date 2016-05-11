@@ -1,21 +1,22 @@
 import {recipes} from "../dataTemp/recipes";
 
 export function getListRecipes(){
-  return recipes;
+  return $.get("/api/recipes");
 }
 
 export function getRecipeID(idRecipe){
-  return getListRecipes().filter((recipe)=>
-    recipe.id === idRecipe
-  );
+  // return getListRecipes().filter((recipe)=>
+  //   recipe.id === idRecipe
+  // );
+  return $.get("/api/recipes/" + idRecipe);
 }
 
+/*
 function getListRecipesCategory(category){
-  return getListRecipes().filter((recipe)=>
-    (recipe.category).toUpperCase() === category.toUpperCase()
-  );
+  return $.get("/api/recipes/category/" + category)
 }
-
+*/
+/*
 export function getRecipeTerms(term){
     let list = getListRecipesCategory(term);
     if(list.length >= 1){
@@ -24,10 +25,12 @@ export function getRecipeTerms(term){
     else
       return getRecipeTerm(term);
 }
-
+*/
+/*
 function getRecipeTerm(term){
   return getListRecipes().filter((recipe)=>
     ((recipe.name).toUpperCase()).includes(term.toUpperCase())
   );
 
 }
+*/

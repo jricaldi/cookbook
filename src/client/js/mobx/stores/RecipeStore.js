@@ -1,6 +1,6 @@
 import {observable, computed} from 'mobx';
 import RecipeModel from '../models/RecipeModel'
-import  {getListRecipes, getRecipeTerms} from "../../calls/recipe";
+import  {getListRecipes} from "../../calls/recipe";
 import {uuid} from "../../util/Functions";
 
 export default class RecipeStore {
@@ -16,9 +16,9 @@ export default class RecipeStore {
 		return this.recipes.length;
 	}
 
-	getRecipeFromDB(model) {
-		//TODO: Get from BD
-		let firstList = getListRecipes().map(
+	async getRecipeFromDB(model) {
+		let firstList = await getListRecipes();
+		firstList = firstList.map(
 			(recipe)=> RecipeModel.fromJson(this,recipe)
 		);
 		this.recipes = Object.assign([], firstList);
@@ -26,12 +26,16 @@ export default class RecipeStore {
 	}
 
 	searchTerm(term){
-		this.recipes = getRecipeTerms(term).map(
-			(recipe)=> RecipeModel.fromJson(this,recipe)
-		);
-		if(this.recipes.length<1){
-			this.recipes = this.startRecipes;
+		this.recipes = this.getRecipeTerms(term);
+		if(this.recipes.length<1 || term === ""){
+			this.recipes = Object.assign([], this.startRecipes);
 		}
+	}
+
+	getRecipeTerms(term){
+			return this.recipes.filter((recipe)=>
+				((recipe.name).toUpperCase()).includes(term.toUpperCase())
+			);
 	}
 
 	addRecipe(recipe) {

@@ -4,8 +4,8 @@ maps.recipe = [
     {
         mapId: 'recipeMap',
         idProperty: 'id_recipe',
-        properties : ["name", "id_category","chef","preparation",
-        "created","updated","name_url"],
+        properties : ["rec_name", "rec_category","chef","rec_preparation",
+        "rec_created","rec_updated","rec_name_url"],
         collections: [
             {name: 'ingredients', mapId: 'ingredientMap'}
         ]
@@ -13,7 +13,7 @@ maps.recipe = [
     {
         mapId: 'ingredientMap',
         idProperty: 'id_ingredient',
-        properties : ["name","amount"]
+        properties : ["ing_name","ing_amount"]
     }
 ];
 

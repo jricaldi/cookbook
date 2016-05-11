@@ -12,7 +12,7 @@ export default class ListRecipe extends React.Component {
     let tempRecipes = recipeStore.recipes.filter((recipe)=>{
       if(categoryStore.category === Constants.CATEGORY.ALL)
         return true;
-      return (recipe.category).toUpperCase()=== categoryStore.category;
+      return (recipe.category).toUpperCase() === (categoryStore.category).toUpperCase();
     });
 
     const Recipes = tempRecipes.map((recipe, i) =>

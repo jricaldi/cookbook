@@ -57,8 +57,8 @@ export default class RecipeModel {
 
 	static fromJson(store, json) {
 		return new RecipeModel(store,
-			json.id, json.name, json.category,
-			json.chef, json.preparation, json.ingredients
+			json.id_recipe, json.rec_name, json.rec_category,
+			json.rec_chef, json.rec_preparation, json.ingredients
 		);
 	}
 }

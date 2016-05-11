@@ -3,7 +3,7 @@ export const recipes =
     {
       id:"aji-de-gallina",
       name:"Aji de Gallina",
-      category:"Meat",
+      category:"meat",
       chef: "Jorge Ricaldi",
       preparation:"This is a preparation",
       ingredients:{
@@ -20,7 +20,7 @@ export const recipes =
     {
       id: "lomo-saltado",
       name:"Lomo saltado",
-      category:"Meat",
+      category:"meat",
       chef: "Jorge Ricaldi",
       preparation:"This is a preparation",
       ingredients:{
@@ -37,7 +37,7 @@ export const recipes =
     {
       id: "gelatina-de-fresa",
       name:"Gelatina de fresa",
-      category:"Desserts",
+      category:"desserts",
       chef: "Jorge Ricaldi",
       preparation:"This is a preparation",
       ingredients:{
@@ -54,7 +54,7 @@ export const recipes =
     {
       id: "sopa-de-casa",
       name:"Sopa de casa",
-      category:"Meat",
+      category:"meat",
       chef: "Jorge Ricaldi",
       preparation:"This is a preparation",
       ingredients:{
@@ -71,7 +71,7 @@ export const recipes =
     {
       id:"aguadito",
       name:"Aguadito",
-      category:"Salads",
+      category:"salads",
       chef: "Jorge Ricaldi",
       preparation:"This is a preparation",
       ingredients:{
@@ -88,7 +88,7 @@ export const recipes =
     {
       id:"tallarines-rojos",
       name:"Tallarines rojos",
-      category:"Pastas",
+      category:"pastas",
       chef: "Jorge Ricaldi",
       preparation:"This is a preparation",
       ingredients:{

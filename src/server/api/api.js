@@ -14,11 +14,9 @@ var recipesRest = router.route('/recipes');
 
 recipesRest.get(function(req,res){
   knex.select().from("recipe")
-  .join("ingredient",
-  {"recipe.id_recipe" : "ingredient.id_recipe"})
+  // .leftJoin("ingredient as i","r.id_recipe","i.ing_id_recipe")
   .then(function(rows){
-    console.log(rows);
-    var rows = joinjs.map(rows, resultMaps.recipe, 'recipeMap');
+    // var rows = joinjs.map(rows, resultMaps.recipe);
     res.json(rows);
   });
 
@@ -29,11 +27,15 @@ recipesRest.post(function(req,res){
   var ingredients = req.body.ingredients;
   knex.transaction(function(trx){
 
-    knex.insert({id_recipe:recipe.id, name : recipe.name, chef : recipe.chef , category : recipe.category, preparation : recipe.preparation},"id_recipe").into("recipe")
+    knex.insert({id_recipe:recipe.id, rec_name : recipe.name, rec_chef : recipe.chef ,
+                rec_category : recipe.category, rec_preparation : recipe.preparation},"id_recipe")
+    .into("recipe")
     .transacting(trx)
     .then(function(id_recipe) {
       return Promise.map(ingredients, function(ing) {
-        return knex.insert({id_ingredient:ing.id,name:ing.name, amount: ing.amount, id_recipe:id_recipe}).into("ingredient").transacting(trx);
+        return knex.insert({id_ingredient:ing.id, ing_name:ing.name,
+                            ing_amount: ing.amount, ing_id_recipe:id_recipe})
+              .into("ingredient").transacting(trx);
       });
     })
     .then(trx.commit).then(trx.rollback);
@@ -49,15 +51,15 @@ recipesRest.post(function(req,res){
 });
 
 /*** Recipes/Category:ID ***/
-var recipesCategoryRest = router.route('/recipes/category/:id');
+var recipesCategoryRest = router.route('/recipes/category/:category');
 
 recipesCategoryRest.get(function(req,res){
-  var id = req.params.id;
-  knex.select().from("recipe").join("ingredient",
-  {"recipe.id_recipe" : "ingredient.id_recipe"})
-  .where({id_category : id})
+  var category = req.params.category;
+  knex.select().from("recipe")
+  // .join("ingredient",
+  // {"recipe.id_recipe" : "ingredient.ing_id_recipe"})
+  .where({rec_category : category})
   .then(function(rows){
-    console.log(rows);
     res.json(JSON.parse(JSON.stringify(rows)));
   });
 });
@@ -68,7 +70,7 @@ var recipesIDRest = router.route('/recipes/:id');
 recipesIDRest.get(function(req,res){
   var id = req.params.id;
   knex.select().from("recipe").join("ingredient",
-  {"recipe.id_recipe" : "ingredient.id_recipe"})
+  {"recipe.id_recipe" : "ingredient.ing_id_recipe"})
   .where({id_recipe : id})
   .then(function(rows){
     console.log(rows);
@@ -134,8 +136,7 @@ categoriesRest.get(function(req,res){
     res.json(rows);
   })
   .catch(()=>{
-    console.log("categorias!!!");
-    res.json(["pastas","salads"]);
+    res.json(["pastas","salads","meat","desserts"]);
   });
 });
 

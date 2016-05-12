@@ -32,10 +32,10 @@ export default class NewRecipe extends React.Component {
 
     let ingredients = Array.from(Array(10).keys()).map((e,i)=>
       <div class="row" key={i}>
-        <div class="input-field col s2">
+        <div class="col s3">
           <input placeholder="Name" id={`ingredientName${i}`} ref={`ingredientName${i}`} type="text" class="validate"/>
         </div>
-        <div class="input-field col s2">
+        <div class="col s3">
           <input placeholder="Amount" id={`amount${i}`} ref={`ingredientAmount${i}`} type="text" class="validate"/>
         </div>
       </div>
@@ -51,8 +51,9 @@ export default class NewRecipe extends React.Component {
 
     return (
       <div class="col s12">
-        <div class="card-panel brown lighten-5">
-          <form onSubmit={this.saveRecipe.bind(this)}>
+        <div class="card-panel brown lighten-5 borderNewRecipe">
+          <h5 class="center sub">New Recipe Form</h5><br/>
+          <form onSubmit={this.saveRecipe.bind(this)} class="padNewRecipe">
             <div class="row">
               <div class="input-field col s6">
                 <input placeholder="Recipe name" type="text" class="validate" ref="name" required/>
@@ -60,6 +61,7 @@ export default class NewRecipe extends React.Component {
             </div>
             <div class="row">
               <div class="col s3">
+                <label for="cmbCategory">Category</label>
                 <select class="browser-default" ref="category" id="cmbCategory" required>
                   {categories}
                 </select>
@@ -71,14 +73,20 @@ export default class NewRecipe extends React.Component {
               </div>
             </div>
             <div class="row">
-              <span>Ingredients (Add maximun 10 of them)</span>
-              {ingredients}
+              <div class="col s12">
+                <span>Ingredients (Add maximun 10 of them)</span>
+                <div class="mt30">
+                  {ingredients}
+                </div>
+              </div>
             </div>
             <div class="row">
-              <textarea name="preparation" id="preparation" ref="preparation" class="materialize-textarea" length="120" placeholder="Preparation" required></textarea>
+              <div class="col s12">
+                <textarea name="preparation" id="preparation" ref="preparation" class="materialize-textarea" length="120" placeholder="Preparation" required></textarea>
+              </div>
             </div>
             <div class="row center">
-              <button class="btn" type="submit">Submit Recipe</button>
+              <button class="btn-large green borderCool2" type="submit">Save it!!!</button>
             </div>
           </form>
         </div>

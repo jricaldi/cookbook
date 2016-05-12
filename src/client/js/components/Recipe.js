@@ -24,9 +24,9 @@ export default class Recipe extends React.Component {
             <div class="col s12" style={{height:"0px"}}>
               <img src={imgCategory} class="iconCategory"/>
             </div>
-            <div class="col s12" style={{"marginTop":"5%"}}>
-              <h4 class="center titleRecipe bold">{name}</h4><br/>
-              <span class="center chefNameRecipe">{chef}</span>
+            <div class="col s12 center" style={{"marginTop":"5%"}}>
+              <h4 class="titleRecipe bold">{name}</h4><br/>
+              <span class=" chefNameRecipe">{chef}</span>
             </div>
           </div>
         </Link>

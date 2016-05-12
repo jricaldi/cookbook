@@ -8,6 +8,14 @@
   margin-top: 2em;
 }
 
+.borderNewRecipe{
+  border-radius: 20px;
+}
+
+.padNewRecipe{
+  padding: 10px 30px;
+}
+
 .sub{
   text-decoration: underline;
 }

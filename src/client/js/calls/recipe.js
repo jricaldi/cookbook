@@ -4,11 +4,8 @@ export function getListRecipes(){
   return $.get("/api/recipes");
 }
 
-export function getRecipeID(idRecipe){
-  // return getListRecipes().filter((recipe)=>
-  //   recipe.id === idRecipe
-  // );
-  return $.get("/api/recipes/" + idRecipe);
+export function getRecipeID(name_url){
+  return $.get("/api/recipes/" + name_url);
 }
 
 /*

@@ -13,12 +13,13 @@ export default class Recipe extends React.Component {
 
   render() {
 
-    let { id, name, category, description } = this.state.recipe;
-    let imgCategory = getImageCategory(category.toUpperCase());
+    let { name_url, name, category } = this.state.recipe;
+
+    let imgCategory = getImageCategory(category);
 
     return (
       <div class="col s6 m4 l4 recipeCotainer" >
-        <Link to={`/recipe/${id}`}>
+        <Link to={`/recipe/${name_url}`}>
           <div class=" col s12 recipe hoverable">
             <div class="col s12" style={{height:"0px"}}>
               <img src={imgCategory} class="iconCategory"/>

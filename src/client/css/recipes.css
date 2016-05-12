@@ -8,6 +8,10 @@
   margin-top: 2em;
 }
 
+.sub{
+  text-decoration: underline;
+}
+
 .recipe{
   height: 100%;
   border: 2px solid #9E6E71;

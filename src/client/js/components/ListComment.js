@@ -1,20 +1,19 @@
 import React from "react";
 import {observer} from 'mobx-react';
-import { Constants} from "../util/Constants";
 import Comment from "./Comment"
-import NewComment from "./NewComment";
+import {commentStore} from "../mobx/stores";
+import {getComments} from "../calls/comment";
 
 @observer
 export default class ListComment extends React.Component {
 
   render() {
-
+    // let list = this.props.comments.map((comment,i)=><Comment key={i} detail={comment}/>)
+    let list = commentStore.comments.map((comment,i)=><Comment key={i} detail={comment}/>)
 
     return (
       <div>
-        <Comment/>
-        <Comment/>
-        <Comment/>
+        {list}
       </div>
     );
   }

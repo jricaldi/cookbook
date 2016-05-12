@@ -16,7 +16,7 @@ ReactDOM.render(
   <Router history={hashHistory}>
     <Route path="/" component={Layout}>
       <IndexRoute component={ListRecipe}></IndexRoute>
-      <Route path="recipe/:idRecipe" name="recipeDetail" component={RecipeDetail}></Route>
+      <Route path="recipe/:name_url" name="recipeDetail" component={RecipeDetail}></Route>
       <Route path="newRecipe" name="newRecipe" component={NewRecipe}></Route>
     </Route>
   </Router>,

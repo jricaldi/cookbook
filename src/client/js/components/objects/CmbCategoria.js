@@ -1,20 +1,10 @@
 import React from "react";
 import {observer} from "mobx-react";
-import {getCategories} from "../../calls/categories";
+import {getCategories} from "../../calls/category";
 import {categoryStore} from "../../mobx/stores";
 
 @observer
 export default class CmbCategoria extends React.Component{
-
-  constructor(){
-    super();
-    this.state = { list: []};
-  }
-
-  async componentDidMount(){
-    const data = await getCategories();
-    this.setState({list : data});
-  }
 
   componentDidUpdate(){
     const { category } = this.refs;
@@ -29,9 +19,9 @@ export default class CmbCategoria extends React.Component{
 
     return(
       <div>
-        <select class="icons" ref="category" id="cmbCateoria">
+        <select class="icons" ref="category" id="cmbCategoria">
           <option value="all">all</option>
-          {this.state.list.map(
+          {categoryStore.categories.map(
             (category,i)=>
               <option key={i} value={category}
                 data-icon={`../../../img/categories/${category}.png`}

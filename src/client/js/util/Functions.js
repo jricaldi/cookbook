@@ -1,6 +1,7 @@
 import { Constants} from "./Constants";
 
 export function getImageCategory(category){
+  category = category.toUpperCase();
   switch (category) {
     case Constants.CATEGORY.PASTAS:
       return "./img/categories/pastas.png";
@@ -27,4 +28,10 @@ export function	uuid() {
 	}
 
 	return uuid;
+}
+
+export function genNameUrl(nameRecipe){
+  let listTemp = nameRecipe.split(" ");
+  listTemp = listTemp.filter((i)=> i != "");
+  return listTemp.join("-");
 }

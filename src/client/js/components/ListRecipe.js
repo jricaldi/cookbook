@@ -17,7 +17,7 @@ export default class ListRecipe extends React.Component {
 
     const Recipes = tempRecipes.map((recipe, i) =>
       <Recipe
-      key={recipe.id}
+      key={recipe.id_recipe}
       recipe={recipe}/>
     );
 

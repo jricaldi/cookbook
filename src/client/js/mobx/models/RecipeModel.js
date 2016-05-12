@@ -2,21 +2,24 @@ import {observable} from 'mobx';
 
 export default class RecipeModel {
 	store;
-	id;
-	@observable name;
-	@observable category;
-	@observable chef;
-	@observable preparation;
-	@observable ingredients;
+	id_recipe;
+	name;
+	category;
+	chef;
+	preparation;
+	ingredients;
+	name_url;
 
-	constructor(store, id, name, category, chef, preparation, ingredients ) {
+
+	constructor(store, id_recipe, name, category, chef, preparation, ingredients, name_url ) {
 		this.store = store;
-		this.id = id;
+		this.id_recipe = id_recipe;
 		this.name = name;
 		this.category = category;
 		this.chef = chef;
 		this.preparation = preparation;
 		this.ingredients = ingredients;
+		this.name_url = name_url;
 	}
 
 	setName(name) {
@@ -46,19 +49,21 @@ export default class RecipeModel {
 
 	toJson() {
 		return {
-			id: this.id,
+			id_recipe: this.id_recipe,
 			name: this.name,
 			category : this.category,
 			chef: this.chef,
 			preparation: this.preparation,
-			ingredients: this.ingredients
+			ingredients: this.ingredients,
+			name_url : this.name_url
 		};
 	}
 
 	static fromJson(store, json) {
 		return new RecipeModel(store,
 			json.id_recipe, json.rec_name, json.rec_category,
-			json.rec_chef, json.rec_preparation, json.ingredients
+			json.rec_chef, json.rec_preparation, json.ingredients,
+			json.rec_name_url
 		);
 	}
 }

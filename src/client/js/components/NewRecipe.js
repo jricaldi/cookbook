@@ -2,10 +2,11 @@ import React from "react";
 import {observer} from 'mobx-react';
 import {recipeStore} from "../mobx/stores";
 import CmbCategoria from "./objects/CmbCategoria";
-import {getCategories} from "../calls/categories";
+import {categoryStore} from "../mobx/stores";
 
 @observer
 export default class NewRecipe extends React.Component {
+
 
   saveRecipe(event){
     event.preventDefault();
@@ -13,19 +14,16 @@ export default class NewRecipe extends React.Component {
     recipe.name = this.refs.name.value;
     recipe.chef = this.refs.chef.value;
     recipe.preparation = this.refs.preparation.value;
-    console.log(this.refs.category);
-    // recipe.category = this.refs.category.value;
+    recipe.category = this.refs.category.value;
     var $this = this;
-    recipe.ingredients = Array.from(Array(10).keys()).map((e,i)=>{
-      let name = "name"+i;
-      let value_name = $this.refs["ingredientName" + i].value;
-      let amount = "amount"+i;
-      let value_amount = $this.refs["ingredientAmount" + i].value;
-      return {[name] : value_name, [amount] : value_amount}
+    recipe.ingredients = [];
+    Array.from(Array(10).keys()).forEach((e,i)=>{
+      let value_name = ($this.refs["ingredientName" + i].value).trim();
+      let value_amount = ($this.refs["ingredientAmount" + i].value).trim();
+      if(value_name !="" || value_amount != "")
+        recipe.ingredients.push({"name" : value_name, "amount" : value_amount});
     });
-
-    console.log(recipe);
-    // recipeStore.addRecipe(recipe);
+    recipeStore.addRecipe(recipe);
     this.props.history.pushState(null, '/');
 
   }
@@ -43,7 +41,7 @@ export default class NewRecipe extends React.Component {
       </div>
     );
 
-    let categories = getCategories().map(
+    let categories = categoryStore.categories.map(
       (category,i)=>
         <option key={i} value={category}
           data-icon={`../../../img/categories/${category}.png`}
@@ -57,20 +55,19 @@ export default class NewRecipe extends React.Component {
           <form onSubmit={this.saveRecipe.bind(this)}>
             <div class="row">
               <div class="input-field col s6">
-                <input placeholder="Recipe name" type="text" class="validate" ref="name"/>
+                <input placeholder="Recipe name" type="text" class="validate" ref="name" required/>
               </div>
             </div>
             <div class="row">
               <div class="col s3">
-                <select class="browser-default" ref="category" id="category">
-                  <option>All</option>
+                <select class="browser-default" ref="category" id="cmbCategory" required>
                   {categories}
                 </select>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s6">
-                <input placeholder="Chef's name" type="text" class="validate" ref="chef"/>
+                <input placeholder="Chef's name" type="text" class="validate" ref="chef" required/>
               </div>
             </div>
             <div class="row">
@@ -78,7 +75,7 @@ export default class NewRecipe extends React.Component {
               {ingredients}
             </div>
             <div class="row">
-              <textarea name="preparation" id="preparation" ref="preparation" class="materialize-textarea" length="120" placeholder="Preparation"></textarea>
+              <textarea name="preparation" id="preparation" ref="preparation" class="materialize-textarea" length="120" placeholder="Preparation" required></textarea>
             </div>
             <div class="row center">
               <button class="btn" type="submit">Submit Recipe</button>

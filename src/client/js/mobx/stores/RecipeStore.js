@@ -1,11 +1,12 @@
 import {observable, computed} from 'mobx';
 import RecipeModel from '../models/RecipeModel'
 import  {getListRecipes} from "../../calls/recipe";
-import {uuid} from "../../util/Functions";
+import {uuid, genNameUrl} from "../../util/Functions";
 
 export default class RecipeStore {
 
 	@observable recipes = [];
+	@observable actualRecipe;
 	startRecipes = [];
 
 	constructor() {
@@ -39,12 +40,17 @@ export default class RecipeStore {
 	}
 
 	addRecipe(recipe) {
-		recipe.ingredients.forEach((ing)=>{
-			ing.id = uuid();
-		});
-		this.recipes.push(new RecipeModel(this, uuid(),
+		recipe.id_recipe = uuid();
+		recipe.name_url = genNameUrl(recipe.name);
+		console.log(recipe.ingredients.length);
+		if(recipe.ingredients.length >	1){
+			recipe.ingredients.forEach((ing)=>{
+				ing.id_ingredient = uuid();
+			});
+		}
+		this.recipes.push(new RecipeModel(this, recipe.id_recipe,
 			recipe.name, recipe.category,
-			recipe.chef, recipe.preparation, recipe.ingredients));
+			recipe.chef, recipe.preparation, recipe.ingredients, recipe.name_url));
 		$.post("/api/recipes", recipe);
 
 	}

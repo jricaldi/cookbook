@@ -6,14 +6,13 @@ import { Constants} from "../util/Constants";
 export default class Comment extends React.Component {
 
   render() {
-
-
+    let {con_name, con_description} = this.props.detail;
+    console.log(this.props);
     return (
         <div>
           <div class="card-panel brown lighten-5">
-            <span class="brown-text text-darken-4 bold">Comment name</span><br/><br/>
-            <span class="">I am a very simple card. I am good at containing small bits of information.
-            I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+            <span class="brown-text text-darken-4 bold">{con_name}</span><br/><br/>
+            <span class="">{con_description}
             </span>
           </div>
         </div>

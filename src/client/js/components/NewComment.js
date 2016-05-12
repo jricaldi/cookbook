@@ -24,6 +24,7 @@ export default class NewComment extends React.Component {
       commentStore.addComment(comment,recipeStore.actualRecipe);
       this.refs.txtNewComment.value = "";
       this.refs.txtNameNewComment.value = "";
+      this.props.setScoreTitle(parseInt(comment.con_points) + parseInt(comment.scoreRecipe));
     }
 
   }

@@ -14,7 +14,7 @@ export default class RecipeDetail extends React.Component {
 
   constructor(props){
       super(props);
-      this.state = {detalle : {}};
+      this.state = {detalle : {}, scoreTitle : ""};
       this.state.name_url = this.props.params.name_url;
   }
 
@@ -24,7 +24,11 @@ export default class RecipeDetail extends React.Component {
     recipeStore.actualRecipe = detalle.id_recipe;
     let comments = await getComments(detalle.id_recipe);
     commentStore.comments = Object.assign([], comments);
-    this.setState({detalle: detalle});
+    this.setState({detalle: detalle, scoreTitle : detalle.score});
+  }
+
+  setScoreTitle(score){
+    this.setState({scoreTitle : score});
   }
 
   render(){
@@ -51,7 +55,7 @@ export default class RecipeDetail extends React.Component {
                 <img src={imgCategory} class="iconCategoryLarge"/>
               </div>
               <div class="col s12 mb10">
-                <h4 class="center sub">{detalle.name} <span class="bold brown-text">({detalle.score} points)</span></h4>
+                <h4 class="center sub">{detalle.name} <span class="bold brown-text">({this.state.scoreTitle} points)</span></h4>
               </div>
               <div class="col s12 mb10">
                 <h5>Chef's name</h5><br/>
@@ -68,7 +72,7 @@ export default class RecipeDetail extends React.Component {
             </div>
             <div class="col s12">
               <BtnNewComment/>
-              <NewComment scoreRecipe={detalle.score}/>
+              <NewComment scoreRecipe={detalle.score} setScoreTitle={this.setScoreTitle.bind(this)}/>
               <ListComment/>
             </div>
         </div>

@@ -43,7 +43,8 @@ recipesRest.post(function(req,res){
 
     knex.insert({id_recipe:recipe.id_recipe, rec_name : recipe.name, rec_chef : recipe.chef ,
                 rec_category : recipe.category, rec_preparation : recipe.preparation,
-                rec_name_url : recipe.name_url, rec_created: recipe.con_created, rec_updated : recipe.con_created},"id_recipe")
+                rec_name_url : recipe.name_url, rec_score : 0,
+                rec_created: recipe.con_created, rec_updated : recipe.con_created},"id_recipe")
     .into("recipe")
     .transacting(trx)
     .then(function(id_recipe) {
@@ -139,7 +140,6 @@ var recipesIDCommentsRest = router.route('/recipes/:id_recipe/comments')
 
 recipesIDCommentsRest.get(function(req,res){
   var id_recipe = req.params.id_recipe;
-  console.log("asdasd" + id_recipe);
   knex.select().from("comment").where({con_id_recipe : id_recipe})
   .then(function(rows){
     res.json(rows);
@@ -149,13 +149,19 @@ recipesIDCommentsRest.get(function(req,res){
 recipesIDCommentsRest.post(function(req,res){
   var id_recipe = req.params.id_recipe;
   var comment = req.body;
+  var point = parseInt(comment.con_points);
+  var score = parseInt(comment.scoreRecipe);
   console.log(comment);
   knex.transaction(function(trx){
 
     knex.insert({id_comment : comment.id_comment, con_name: comment.con_name,
-       con_description : comment.con_description, con_id_recipe : id_recipe})
+       con_description : comment.con_description, con_id_recipe : id_recipe, con_points : comment.con_points}, "con_id_recipe")
     .into("comment")
     .transacting(trx)
+    .then(function(id_recipe) {
+      var id_recipe = id_recipe[0];
+      return knex("recipe").where({id_recipe: id_recipe}).update("rec_score",score + point).transacting(trx);
+    })
     .then(trx.commit).then(trx.rollback);
 
   })

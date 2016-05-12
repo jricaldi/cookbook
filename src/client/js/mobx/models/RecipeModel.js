@@ -9,9 +9,10 @@ export default class RecipeModel {
 	preparation;
 	ingredients;
 	name_url;
+	score;
 
 
-	constructor(store, id_recipe, name, category, chef, preparation, ingredients, name_url ) {
+	constructor(store, id_recipe, name, category, chef, preparation, ingredients, name_url, score) {
 		this.store = store;
 		this.id_recipe = id_recipe;
 		this.name = name;
@@ -20,6 +21,7 @@ export default class RecipeModel {
 		this.preparation = preparation;
 		this.ingredients = ingredients;
 		this.name_url = name_url;
+		this.score = score;
 	}
 
 	setName(name) {
@@ -55,7 +57,8 @@ export default class RecipeModel {
 			chef: this.chef,
 			preparation: this.preparation,
 			ingredients: this.ingredients,
-			name_url : this.name_url
+			name_url : this.name_url,
+			score : this.score
 		};
 	}
 
@@ -63,7 +66,7 @@ export default class RecipeModel {
 		return new RecipeModel(store,
 			json.id_recipe, json.rec_name, json.rec_category,
 			json.rec_chef, json.rec_preparation, json.ingredients,
-			json.rec_name_url
+			json.rec_name_url, json.rec_score
 		);
 	}
 }

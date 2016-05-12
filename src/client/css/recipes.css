@@ -9,11 +9,17 @@
 }
 
 .borderNewRecipe{
-  border-radius: 20px;
+  border-radius: 20px !important;
 }
 
 .padNewRecipe{
-  padding: 10px 30px;
+  padding: 30px !important;
+}
+
+
+.lastRecipe{
+  font-weight: bold !important;
+  font-size: 1.1rem !important;
 }
 
 .sub{
@@ -54,10 +60,10 @@
 }
 
 .iconCategoryLarge{
-  height: 80px;
+  height: 70px;
   position: relative;
-  top: -40px;
-  right: -40px;
+  top: -50px;
+  right: -70px;
   float: right;
 }
 

@@ -8,9 +8,7 @@ import {getComments} from "../calls/comment";
 export default class ListComment extends React.Component {
 
   render() {
-    // let list = this.props.comments.map((comment,i)=><Comment key={i} detail={comment}/>)
     let list = commentStore.comments.map((comment,i)=><Comment key={i} detail={comment}/>)
-
     return (
       <div>
         {list}

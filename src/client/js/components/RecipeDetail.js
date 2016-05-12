@@ -46,29 +46,29 @@ export default class RecipeDetail extends React.Component {
 
     return(
         <div class="col s12 recipeBigCotainer" >
-            <div class="col s12 recipe noPointer" >
+            <div class="col s12 recipe noPointer padNewRecipe borderNewRecipe" >
               <div class="col s12" style={{height:"0px"}}>
                 <img src={imgCategory} class="iconCategoryLarge"/>
               </div>
-              <div class="col s12">
-                <h4 class="center sub">{detalle.name}</h4>
+              <div class="col s12 mb10">
+                <h4 class="center sub">{detalle.name} <span class="bold brown-text">({detalle.score} points)</span></h4>
               </div>
-              <div class="col s12">
+              <div class="col s12 mb10">
                 <h5>Chef's name</h5><br/>
                 {detalle.chef}
               </div>
-              <div class="col s12">
+              <div class="col s12 mb10">
                 <h5>Ingredients</h5><br/>
                 {ingredients}
               </div>
-              <div class="col s12">
+              <div class="col s12 mb10">
                 <h5>Preparation</h5><br/>
                 {detalle.preparation}
               </div>
             </div>
             <div class="col s12">
               <BtnNewComment/>
-              <NewComment/>
+              <NewComment scoreRecipe={detalle.score}/>
               <ListComment/>
             </div>
         </div>

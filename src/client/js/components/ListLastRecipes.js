@@ -8,8 +8,8 @@ export default class ListLastRecipes extends React.Component{
 
   render(){
     let list = recipeStore.lastRecipes.map((recipe,i)=>
-      <li key={i}>
-        <span>- {recipe.name}</span>
+      <li key={i} class="mb10">
+        <span class="lastRecipe">- {recipe.name}</span>
       </li>
     );
 

@@ -1,8 +1,18 @@
-import React from "react"
+import React from "react";
+import {observer} from 'mobx-react';
+import {recipeStore} from "../mobx/stores";
 
-
+@observer
 export default class ListLastRecipes extends React.Component{
+
+
   render(){
+    let list = recipeStore.lastRecipes.map((recipe,i)=>
+      <li key={i}>
+        <span>- {recipe.name}</span>
+      </li>
+    );
+
     return(
       <div>
         <div class="col s12">
@@ -10,13 +20,7 @@ export default class ListLastRecipes extends React.Component{
         </div>
         <div class="col s12">
           <ul>
-            <li>demo recipe</li>
-            <li>demo recipe</li>
-            <li>demo recipe</li>
-            <li>demo recipe</li>
-            <li>demo recipe</li>
-            <li>demo recipe</li>
-            <li>demo recipe</li>            
+          {list}
           </ul>
         </div>
       </div>

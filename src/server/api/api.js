@@ -11,14 +11,24 @@ app = express();
 var router = express.Router();
 
 /*** API rest ***/
+
+/*** Recipes/Last ***/
+var lastRecipesRest = router.route('/recipes/last');
+
+lastRecipesRest.get(function(req,res){
+  knex.select().from("recipe").orderBy("rec_updated", "desc").limit(10)
+  .then(function(rows){
+    res.json(rows);
+  });
+
+});
+
 /*** Recipes ***/
 var recipesRest = router.route('/recipes');
 
 recipesRest.get(function(req,res){
   knex.select().from("recipe")
-  // .leftJoin("ingredient as i","r.id_recipe","i.ing_id_recipe")
   .then(function(rows){
-    // var rows = joinjs.map(rows, resultMaps.recipe);
     res.json(rows);
   });
 
@@ -27,14 +37,13 @@ recipesRest.get(function(req,res){
 recipesRest.post(function(req,res){
   var recipe = req.body;
   var ingredients = recipe.ingredients;
-  console.log(recipe);
-  console.log("----------------!!!!");
-  console.log(ingredients);
+  recipe.con_created = (new Date()).toUTCString();
+  recipe.con_updated = (new Date()).toUTCString();
   knex.transaction(function(trx){
 
     knex.insert({id_recipe:recipe.id_recipe, rec_name : recipe.name, rec_chef : recipe.chef ,
                 rec_category : recipe.category, rec_preparation : recipe.preparation,
-                rec_name_url : recipe.name_url},"id_recipe")
+                rec_name_url : recipe.name_url, rec_created: recipe.con_created, rec_updated : recipe.con_created},"id_recipe")
     .into("recipe")
     .transacting(trx)
     .then(function(id_recipe) {
@@ -80,8 +89,6 @@ recipesIDRest.get(function(req,res){
   var name_url = req.params.name_url;
   console.log(name_url);
   knex.select().from("recipe as r")
-  // .join("ingredient",
-  // {"recipe.id_recipe" : "ingredient.ing_id_recipe"})
   .leftJoin("ingredient as i","r.id_recipe","i.ing_id_recipe")
   .where({"r.rec_name_url" : name_url})
   .then(function(rows){

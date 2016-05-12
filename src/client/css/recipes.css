@@ -12,6 +12,14 @@
   text-decoration: underline;
 }
 
+.noPointer{
+  cursor : default !important;
+}
+
+.chefNameRecipe{
+  font-size: 1rem !important;
+}
+
 .recipe{
   height: 100%;
   border: 2px solid #9E6E71;

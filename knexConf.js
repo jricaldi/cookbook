@@ -4,7 +4,8 @@ var config = {
     host     : '127.0.0.1',
     user     : 'ricaldi',
     password : 'password',
-    database : 'ricaldi'
+    database : 'ricaldi',
+    timezone : "UTC"
   }
 }
 

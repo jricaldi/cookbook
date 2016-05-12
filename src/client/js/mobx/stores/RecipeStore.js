@@ -1,21 +1,33 @@
-import {observable, computed} from 'mobx';
+import {observable, computed, autorun} from 'mobx';
 import RecipeModel from '../models/RecipeModel'
-import  {getListRecipes} from "../../calls/recipe";
+import  {getListRecipes, getLastRecipes} from "../../calls/recipe";
 import {uuid, genNameUrl} from "../../util/Functions";
 
 export default class RecipeStore {
 
 	@observable recipes = [];
 	@observable actualRecipe;
+	@observable lastRecipes = [];
 	startRecipes = [];
 
 	constructor() {
 		this.getRecipeFromDB();
+		this.getLastRecipesFromDB();
 	}
 
 	@computed get totalRecipes() {
 		return this.recipes.length;
 	}
+
+	async getLastRecipesFromDB(model){
+		let lastRecipes = await getLastRecipes();
+		lastRecipes = lastRecipes.map(
+			(recipe)=> RecipeModel.fromJson(this,recipe)
+		);
+		this.lastRecipes = Object.assign([],lastRecipes);
+	}
+
+
 
 	async getRecipeFromDB(model) {
 		let firstList = await getListRecipes();
@@ -42,15 +54,18 @@ export default class RecipeStore {
 	addRecipe(recipe) {
 		recipe.id_recipe = uuid();
 		recipe.name_url = genNameUrl(recipe.name);
-		console.log(recipe.ingredients.length);
 		if(recipe.ingredients.length >	1){
 			recipe.ingredients.forEach((ing)=>{
 				ing.id_ingredient = uuid();
 			});
 		}
-		this.recipes.push(new RecipeModel(this, recipe.id_recipe,
+		let recipeModel = new RecipeModel(this, recipe.id_recipe,
 			recipe.name, recipe.category,
-			recipe.chef, recipe.preparation, recipe.ingredients, recipe.name_url));
+			recipe.chef, recipe.preparation,
+			recipe.ingredients, recipe.name_url);
+
+		this.recipes.push(recipeModel);
+		this.lastRecipes.unshift(recipeModel);
 		$.post("/api/recipes", recipe);
 
 	}

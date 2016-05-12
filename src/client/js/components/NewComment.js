@@ -34,7 +34,7 @@ export default class NewComment extends React.Component {
             <textarea ref="txtNewComment"
               class="materialize-textarea"
               length="120"
-              placeholder="Write something and press 'ENTER' button"
+              placeholder="Write something and press ENTER button"
               onKeyDown={this.sendComment.bind(this)}
               >
             </textarea>
